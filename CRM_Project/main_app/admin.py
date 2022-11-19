@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Client, Order, Brand, Unit, Model
+from .models import Client, Order, Brand, Unit, Model, RepairStage
 
 
 @admin.register(Client)
@@ -9,7 +9,8 @@ class ClientAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['pk', 'client', 'unit', 'defect', 'diagnostic_result', ]
+    list_display = ['pk', 'client', 'unit', 'defect', 'diagnostic_result', 'repair_stage', ]
+    list_editable = ['repair_stage']
 
 
 @admin.register(Brand)
@@ -27,3 +28,6 @@ class UnitAdmin(admin.ModelAdmin):
     list_display = ['brand', 'model', ]
 
 
+@admin.register(RepairStage)
+class RepairStageAdmin(admin.ModelAdmin):
+    list_display = ['stage', ]
