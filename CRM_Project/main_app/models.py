@@ -12,7 +12,7 @@ class Client(models.Model):
     address = models.CharField(max_length=40, verbose_name='Адрес')
 
     def __str__(self):
-        return f'{self.name} {self.surname} {self.phone_number}'
+        return f'{self.name} {self.surname} Телефон: {self.phone_number}'
 
 
 class Brand(models.Model):
@@ -38,10 +38,11 @@ class Unit(models.Model):
         return f'{self.brand} {self.model}'
 
 
+
 class Order(models.Model):
-    defect = models.TextField(max_length=120, null=True, verbose_name='Описание дефекта')
-    diagnostic_result = models.TextField(max_length=400, null=True, verbose_name='Результат диагностики')
-    works = models.TextField(max_length=500, null=True, verbose_name='Выполненные работы')
+    defect = models.TextField(max_length=120, null=True, blank=True, verbose_name='Описание дефекта')
+    diagnostic_result = models.TextField(max_length=400, null=True, blank=True, verbose_name='Результат диагностики')
+    works = models.TextField(max_length=500, null=True, blank=True, verbose_name='Выполненные работы')
     finally_price = models.IntegerField(validators=[MinValueValidator(0)], null=True, blank=True, default=0, verbose_name='Сумма ремонта')
 
     client = models.ForeignKey(Client, on_delete=models.PROTECT, related_name='order', verbose_name='Клиент')

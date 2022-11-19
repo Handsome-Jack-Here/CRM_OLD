@@ -9,7 +9,7 @@ class ClientAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['client', 'unit', ]
+    list_display = ['pk', 'client', 'unit', 'defect', 'diagnostic_result', ]
 
 
 @admin.register(Brand)
