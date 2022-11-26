@@ -11,6 +11,7 @@ class ClientAdmin(admin.ModelAdmin):
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['pk', 'client', 'unit', 'defect', 'diagnostic_result', 'repair_stage', ]
     list_editable = ['repair_stage']
+    list_display_links = ['pk', 'client', ]
 
 
 @admin.register(Brand)
