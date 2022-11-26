@@ -1,0 +1,10 @@
+{% extends 'main_app/base.html' %}
+
+{% block title %} Index {% endblock %}
+
+{% block content %}
+<ul>{% for order in orders %}
+    <p><a href="">{{ order.pk }} {{ order.unit.brand }} {{ order.unit.model }} </a>{{ order.defect }}</p>
+    {% endfor %}</ul>
+{% endblock %}
+
