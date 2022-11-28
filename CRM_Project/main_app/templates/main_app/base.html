@@ -5,9 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href=" {% static 'main_app/css/master.css' %} ">
+    <link rel="stylesheet" href=" {% static 'main_app/css/bootstrap.min.css' ">
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
+    <div class="wrap">
     {% block content %} {% endblock %}
+    </div>
 </body>
 </html>

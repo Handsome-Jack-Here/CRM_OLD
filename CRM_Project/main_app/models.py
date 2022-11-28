@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.core.validators import RegexValidator
 from django.core.validators import MinValueValidator, MaxValueValidator
 
@@ -55,7 +56,11 @@ class Order(models.Model):
 
     client = models.ForeignKey(Client, on_delete=models.PROTECT, related_name='order', verbose_name='Клиент')
     unit = models.ForeignKey(Unit, on_delete=models.PROTECT, related_name='order', null=True, verbose_name='Техника')
-    repair_stage = models.ForeignKey(RepairStage, on_delete=models.PROTECT, null=True, related_name='order', verbose_name='Стадия ремонта')
+    repair_stage = models.ForeignKey(RepairStage, on_delete=models.PROTECT, null=True, related_name='order',
+                                     verbose_name='Стадия ремонта')
 
     def __str__(self):
         return f'{self.pk}'
+
+    def get_url(self):
+        return reverse('get-order', args=(self.pk, ))

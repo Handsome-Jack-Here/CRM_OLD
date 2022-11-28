@@ -3,8 +3,26 @@
 {% block title %} Index {% endblock %}
 
 {% block content %}
-<ul>{% for order in orders %}
-    <p><a href="">{{ order.pk }} {{ order.unit.brand }} {{ order.unit.model }} </a>{{ order.defect }}</p>
-    {% endfor %}</ul>
+
+<div class="left_side">
+<ul>
+    <a href="new_order" style="color: white">Add new order</a>
+    <h3 class="h3_left">Orders</h3>
+    <h3 class="h3_left">Shop</h3>
+    <h3 class="h3_left">Payments</h3>
+    <h3 class="h3_left">Tasks</h3>
+    <hr color="gray">
+    <h3 class="h3_left">About</h3>
+</ul>
+</div>
+
+<div class="right_side">
+    <ul>{% for order in orders %}
+        <h3 class="p_list"><a href="{{ order.get_url }}" style="color: white; text-decoration:none ">{{ order.pk }} {{ order.unit.brand }} {{ order.unit.model }} </a>{{ order.defect }}</h3>
+        {% endfor %}
+    </ul>
+</div>
+
+
 {% endblock %}
 

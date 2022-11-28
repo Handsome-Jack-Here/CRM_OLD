@@ -1,0 +1,11 @@
+{% extends 'main_app/base.html' %}
+
+
+{% block title %} New order {% endblock %}
+
+{% block content %}
+    {% for field in form %}
+        {{ field }}
+        {{ field.label_tag }}
+    {% endfor %}
+{% endblock %}

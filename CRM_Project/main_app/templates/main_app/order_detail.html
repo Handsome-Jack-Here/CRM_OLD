@@ -1,0 +1,21 @@
+{% extends 'main_app/base.html' %}
+
+{% block title %} Order {{ order.pk }} detail{% endblock %}
+
+{% block content %}
+
+<div class="left_side">
+<ul>
+    <h3 class="h3_left">Orders</h3>
+    <h3 class="h3_left">Shop</h3>
+    <h3 class="h3_left">Payments</h3>
+    <h3 class="h3_left">Tasks</h3>
+    <hr color="gray">
+    <h3 class="h3_left">About</h3>
+</ul>
+</div>
+    <div class="right_side">
+        <h3 style="color: white">{{ order.pk }} {{ order.unit.brand }} {{ order.unit.model }} {{ order.defect }}</h3>
+    </div>
+{% endblock %}
+

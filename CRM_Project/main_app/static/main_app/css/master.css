@@ -1,0 +1,34 @@
+.wrap {
+    background: #b3e3ee;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+.left_side {
+    height: 1020px;
+    width: 20%;
+    float: left;
+    background: #0c5460;
+    margin: 5px 5px 5px 5px;
+}
+
+.right_side {
+    height: 1020px;
+    width: 78%;
+    background: #818182;
+    float: right;
+    margin: 5px 5px 5px 5px;
+    font-family: Ubuntu;
+}
+
+.p_list {
+    color: white;
+}
+
+.h3_left {
+    color: white;
+    margin: 40px 0px 40px 0px;
+    font-family: Ubuntu;
+
+}
