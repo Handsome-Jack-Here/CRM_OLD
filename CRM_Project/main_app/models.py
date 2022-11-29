@@ -16,6 +16,9 @@ class Client(models.Model):
     def __str__(self):
         return f'{self.name} {self.surname} Телефон: {self.phone_number}'
 
+    def add_new(self):
+        pass
+
 
 class Brand(models.Model):
     brand = models.CharField(max_length=40, default='No brand', verbose_name='Бренд', unique=True)
@@ -63,4 +66,4 @@ class Order(models.Model):
         return f'{self.pk}'
 
     def get_url(self):
-        return reverse('get-order', args=(self.pk, ))
+        return reverse('get-order', args=(self.pk,))
