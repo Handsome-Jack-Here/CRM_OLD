@@ -21,23 +21,24 @@ class Client(models.Model):
 
 
 class Brand(models.Model):
-    brand = models.CharField(max_length=40, default='No brand', verbose_name='Бренд', unique=True)
+    brand = models.CharField(max_length=40, default='No brand', verbose_name='Бренд')
 
     def __str__(self):
         return f'{self.brand}'
 
 
 class Model(models.Model):
-    model = models.CharField(max_length=40, verbose_name='Модель', unique=True)
+    model = models.CharField(max_length=40, verbose_name='Модель')
 
     def __str__(self):
         return f'{self.model}'
 
 
 class Unit(models.Model):
+    serial_number = models.CharField(max_length=42, default='No serial', verbose_name='Серийный номер')
+
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name='unit', null=True, verbose_name='Бренд')
     model = models.ForeignKey(Model, on_delete=models.PROTECT, related_name='unit', null=True, verbose_name='Модель')
-    serial_number = models.CharField(max_length=42, default='No serial', verbose_name='Серийный номер')
 
     def __str__(self):
         return f'{self.brand} {self.model}'
