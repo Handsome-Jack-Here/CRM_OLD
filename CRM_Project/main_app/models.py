@@ -14,10 +14,9 @@ class Client(models.Model):
     address = models.CharField(max_length=40, verbose_name='Адрес')
 
     def __str__(self):
-        return f'{self.name} {self.surname} Телефон: {self.phone_number}'
+        return f'{self.name} {self.surname}'
 
-    def add_new(self):
-        pass
+
 
 
 class Brand(models.Model):

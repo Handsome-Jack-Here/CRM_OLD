@@ -5,22 +5,41 @@
 {% block content %}
 
 <div class="left_side">
-<ul>
-    <a href="new_order" style="color: white">Add new order</a>
-    <h3 class="h3_left">Orders</h3>
-    <h3 class="h3_left">Shop</h3>
-    <h3 class="h3_left">Payments</h3>
-    <h3 class="h3_left">Tasks</h3>
-    <hr color="gray">
-    <h3 class="h3_left">About</h3>
-</ul>
+    <ul>
+        <a href="new_order" style="color: white">Add new order</a>
+        <h3 class="h3_left">Orders</h3>
+        <h3 class="h3_left">Shop</h3>
+        <h3 class="h3_left">Payments</h3>
+        <h3 class="h3_left">Tasks</h3>
+        <hr color="gray">
+        <h3 class="h3_left">About</h3>
+    </ul>
 </div>
 
 <div class="right_side">
-    <ul>{% for order in orders %}
-        <h3 class="p_list"><a href="{{ order.get_url }}" style="color: white; text-decoration:none ">{{ order.pk }} {{ order.unit.brand }} {{ order.unit.model }} </a>{{ order.defect }}{{ order.client }}</h3>
+    <h1>A Fancy Table</h1>
+
+    <table id="customers">
+        <tr>
+            <th>Client</th>
+            <th>Contact</th>
+            <th>Unit</th>
+        </tr>
+        <tr>
+            {% for field in orders %}
+            <td>{{ field.client }}</td>
+            <td>{{ field.client.phone_number }}</td>
+            <td>{{ field.unit.brand }} Model {{ field.unit.model }}</td>
+        </tr>
         {% endfor %}
-    </ul>
+
+
+    </table>
+
+    <!--    <ul>{% for order in orders %}-->
+    <!--        <h3 class="p_list"><a href="{{ order.get_url }}" style="color: white; text-decoration:none ">{{ order.pk }} {{ order.unit.brand }} {{ order.unit.model }} </a>{{ order.defect }}{{ order.client }}</h3>-->
+    <!--        {% endfor %}-->
+    <!--    </ul>-->
 </div>
 
 

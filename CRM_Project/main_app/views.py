@@ -26,9 +26,11 @@ class NewOrder(View):
 
     def post(self, request):
         new_order = NewOrderForm(request.POST)
+        new_client = NewClientForm(request.POST)
+        print(new_client)
 
         if new_order.is_valid():
-            client = Client(name=request.POST['name'])
+            client = Client(name=request.POST['name'], surname=request.POST['surname'], phone_number=request.POST['phone_number'])
             order = Order(defect=request.POST['defect'])
             brand = Brand(brand=request.POST['brand'])
             model = Model(model=request.POST['model'])
@@ -36,7 +38,6 @@ class NewOrder(View):
             client.save()
             brand.save()
             model.save()
-            print(type(brand))
             unit.brand = brand
             unit.model = model
             unit.save()
@@ -46,20 +47,4 @@ class NewOrder(View):
             order.save()
             return HttpResponseRedirect('/')
 
-# class NewOrder(CreateView):
-#     form_class = NewOrderForm
-#     model = Order
-#     template_name = 'main_app/add_order.html'
-#     success_url = '/'
-#     context_object_name = 'form'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(NewOrder, self).get_context_data(**kwargs)
-#         context['new_client'] = NewClientForm()  # self.request.POST
-#         client = context['new_client']
-#         if self.request.method == 'POST':
-#             context['new_client'] = NewClientForm(self.request.POST).save()
-#         else:
-#             context['new_client'] = NewClientForm
-#
-#         return context
+
