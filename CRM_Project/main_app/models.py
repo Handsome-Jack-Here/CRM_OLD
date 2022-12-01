@@ -58,7 +58,7 @@ class Order(models.Model):
     finally_price = models.IntegerField(validators=[MinValueValidator(0)], null=True, blank=True, default=0,
                                         verbose_name='Сумма ремонта')
 
-    client = models.ForeignKey(Client, on_delete=models.PROTECT, related_name='order', verbose_name='Клиент')
+    client = models.ForeignKey(Client, on_delete=models.PROTECT, related_name='order', verbose_name='Клиент', null=True)
     unit = models.ForeignKey(Unit, on_delete=models.PROTECT, related_name='order', null=True, verbose_name='Техника')
     repair_stage = models.ForeignKey(RepairStage, on_delete=models.PROTECT, null=True, related_name='order',
                                      verbose_name='Стадия ремонта')
