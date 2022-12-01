@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView, CreateView, View
-from .models import Order, Client, Unit, Brand, Model
+from .models import Order, Client, Unit, Brand, Model, UnitType
 from .forms import NewOrderForm, NewClientForm, NewUnitForm, NewBrandForm, NewModelForm
 from django.http import HttpResponseRedirect
 

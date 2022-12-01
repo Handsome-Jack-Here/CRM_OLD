@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Client, Order, Brand, Unit, Model, RepairStage
+from .models import Client, Order, Brand, Unit, Model, RepairStage, UnitType
 
 
 @admin.register(Client)
@@ -32,3 +32,8 @@ class UnitAdmin(admin.ModelAdmin):
 @admin.register(RepairStage)
 class RepairStageAdmin(admin.ModelAdmin):
     list_display = ['stage', ]
+
+
+@admin.register(UnitType)
+class UnitTypeAdmin(admin.ModelAdmin):
+    list_display = ['type']

@@ -23,12 +23,14 @@
         <tr>
             <th>Client</th>
             <th>Contact</th>
+            <th>Type</th>
             <th>Unit</th>
         </tr>
         <tr>
             {% for field in orders %}
             <td>{{ field.client }}</td>
             <td>{{ field.client.phone_number }}</td>
+            <td>{{ field.unit_type }}</td>
             <td>{{ field.unit.brand }} Model {{ field.unit.model }}</td>
         </tr>
         {% endfor %}

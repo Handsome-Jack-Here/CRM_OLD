@@ -5,7 +5,7 @@ from .models import Order, Client, Unit, Brand, Model
 class NewOrderForm(ModelForm):
     class Meta:
         model = Order
-        fields = ['defect', ]
+        fields = ['defect', 'unit_type']
 
 
 class NewClientForm(ModelForm):
