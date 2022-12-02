@@ -6,15 +6,16 @@
 {% block content %}
 
 <form action="" method="post">
-  {% csrf_token %}
+    {% csrf_token %}
 
-  {{ order_form }}<br>
-  {{ client_form }}<br>
-  {{ unit_form }}<br>
-  {{ brand_form }}
-  {{ model_form }}
+    {{ order_form }}<br>
+<!--    {{ unit_type_form }}<br>-->
+    {{ client_form }}<br>
+    {{ unit_form }}<br>
+<!--    {{ brand_form }}<br>-->
+<!--    {{ model_form }}-->
 
-  <button type="submit">Create</button>
+    <button type="submit">Create</button>
 </form>
 
 

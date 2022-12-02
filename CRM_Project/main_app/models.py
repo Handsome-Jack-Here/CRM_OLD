@@ -32,10 +32,10 @@ class Model(models.Model):
 
 
 class UnitType(models.Model):
-    type = models.CharField(max_length=28)
+    unit_type = models.CharField(max_length=28)
 
     def __str__(self):
-        return f'{self.type}'
+        return f'{self.unit_type}'
 
 
 class Unit(models.Model):
@@ -64,7 +64,7 @@ class Order(models.Model):
 
     client = models.ForeignKey(Client, on_delete=models.PROTECT, related_name='order', verbose_name='Клиент', null=True)
     unit = models.ForeignKey(Unit, on_delete=models.PROTECT, related_name='order', null=True, verbose_name='Техника')
-    unit_type = models.ForeignKey(UnitType, on_delete=models.PROTECT, related_name='order', null=True, verbose_name='Тип устройства')
+    type_of_unit = models.ForeignKey(UnitType, on_delete=models.PROTECT, related_name='order', null=True, verbose_name='Тип устройства')
     repair_stage = models.ForeignKey(RepairStage, on_delete=models.PROTECT, null=True, related_name='order',
                                      verbose_name='Стадия ремонта')
 

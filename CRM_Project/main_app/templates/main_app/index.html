@@ -17,7 +17,6 @@
 </div>
 
 <div class="right_side">
-    <h1>A Fancy Table</h1>
 
     <table id="customers">
         <tr>
@@ -28,9 +27,9 @@
         </tr>
         <tr>
             {% for field in orders %}
-            <td>{{ field.client }}</td>
+            <td><a href="{{ field.get_url }}">{{ field.client }}</a></td>
             <td>{{ field.client.phone_number }}</td>
-            <td>{{ field.unit_type }}</td>
+            <td>{{ field.type_of_unit }}</td>
             <td>{{ field.unit.brand }} Model {{ field.unit.model }}</td>
         </tr>
         {% endfor %}

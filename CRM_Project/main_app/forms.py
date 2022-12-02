@@ -1,11 +1,11 @@
 from django.forms import ModelForm
-from .models import Order, Client, Unit, Brand, Model
+from .models import Order, Client, Unit, Brand, Model, UnitType
 
 
 class NewOrderForm(ModelForm):
     class Meta:
         model = Order
-        fields = ['defect', 'unit_type']
+        fields = ['defect', 'type_of_unit']
 
 
 class NewClientForm(ModelForm):
@@ -17,7 +17,7 @@ class NewClientForm(ModelForm):
 class NewUnitForm(ModelForm):
     class Meta:
         model = Unit
-        fields = ['serial_number', ]
+        fields = ['serial_number', 'brand', 'model']
 
 
 class NewBrandForm(ModelForm):
@@ -27,7 +27,12 @@ class NewBrandForm(ModelForm):
 
 
 class NewModelForm(ModelForm):
-
     class Meta:
         model = Model
+        fields = '__all__'
+
+
+class NewUnitTypeForm(ModelForm):
+    class Meta:
+        model = UnitType
         fields = '__all__'

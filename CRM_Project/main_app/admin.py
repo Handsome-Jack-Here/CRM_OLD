@@ -7,13 +7,6 @@ class ClientAdmin(admin.ModelAdmin):
     list_display = ['name', 'surname', 'phone_number', 'address', ]
 
 
-@admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ['pk', 'client', 'unit', 'defect', 'diagnostic_result', 'repair_stage', ]
-    list_editable = ['repair_stage']
-    list_display_links = ['pk', 'client', ]
-
-
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):
     list_display = ['brand', ]
@@ -36,4 +29,11 @@ class RepairStageAdmin(admin.ModelAdmin):
 
 @admin.register(UnitType)
 class UnitTypeAdmin(admin.ModelAdmin):
-    list_display = ['type']
+    list_display = ['unit_type', ]
+
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['pk', 'client', 'unit', 'defect', 'diagnostic_result', 'repair_stage', 'type_of_unit', ]
+    list_editable = ['repair_stage']
+    list_display_links = ['pk', 'client', ]
