@@ -30,7 +30,7 @@
             <td><a href="{{ field.get_url }}">{{ field.client }}</a></td>
             <td>{{ field.client.phone_number }}</td>
             <td>{{ field.type_of_unit }}</td>
-            <td>{{ field.unit.brand }} Model {{ field.unit.model }}</td>
+            <td>Brand:{{ field.unit.brand }} Model:{{ field.unit.model }}</td>
         </tr>
         {% endfor %}
 

@@ -34,18 +34,12 @@ class NewOrder(View):
             unit = Unit(serial_number=request.POST['serial_number'])
             client = Client(name=request.POST['name'], surname=request.POST['surname'],
                             phone_number=request.POST['phone_number'])
-            # type_of_unit = UnitType(unit_type=request.POST['unit_type'])
-
-
             client.save()
-            unit.save()
-            order.save()
-
             order.client = client
-            # order.unit = unit
-            # order.type_of_unit = type_of_unit
-
-
+            order.type_of_unit = UnitType.objects.get(id=request.POST['type_of_unit'])
+            unit.brand = Brand.objects.get(id=request.POST['brand'])
+            unit.model = Model.objects.get(id=request.POST['model'])
+            unit.save()
+            order.unit = unit
             order.save()
-
             return HttpResponseRedirect('/')

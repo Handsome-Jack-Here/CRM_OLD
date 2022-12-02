@@ -25,7 +25,7 @@ class Brand(models.Model):
 
 
 class Model(models.Model):
-    model = models.CharField(max_length=40, verbose_name='Модель')
+    model = models.CharField(max_length=40, default='No model', verbose_name='Модель')
 
     def __str__(self):
         return f'{self.model}'
