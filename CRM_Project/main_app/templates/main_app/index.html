@@ -24,6 +24,7 @@
             <th>Contact</th>
             <th>Type</th>
             <th>Unit</th>
+            <th>Created</th>
         </tr>
         <tr>
             {% for field in orders %}
@@ -31,6 +32,7 @@
             <td>{{ field.client.phone_number }}</td>
             <td>{{ field.type_of_unit }}</td>
             <td>Brand:{{ field.unit.brand }} Model:{{ field.unit.model }}</td>
+            <td>{{ field.created_at }}</td>
         </tr>
         {% endfor %}
 
