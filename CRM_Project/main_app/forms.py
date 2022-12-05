@@ -7,6 +7,10 @@ class NewOrderForm(ModelForm):
         model = Order
         fields = ['defect', 'type_of_unit']
 
+class OrderDetailForm(ModelForm):
+    model = Order
+    fields = ['defect', 'diagnostic_result', 'client', 'works', 'finally_price', 'client', 'type_of_unit', 'unit', 'repair_stage', ]
+
 
 class NewClientForm(ModelForm):
     class Meta:

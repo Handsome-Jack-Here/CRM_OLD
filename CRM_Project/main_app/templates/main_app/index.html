@@ -4,47 +4,61 @@
 
 {% block content %}
 
-<div class="left_side">
-    <ul>
-        <a href="new_order" style="color: white">Add new order</a>
-        <h3 class="h3_left">Orders</h3>
-        <h3 class="h3_left">Shop</h3>
-        <h3 class="h3_left">Payments</h3>
-        <h3 class="h3_left">Tasks</h3>
-        <hr color="gray">
-        <h3 class="h3_left">About</h3>
-    </ul>
+
+<div class="header">
+    <p style="color: white">SOME TEXT FOR HEADER</p>
+
 </div>
 
-<div class="right_side">
+<div class="content">
 
-    <table id="customers">
-        <tr>
-            <th>Client</th>
-            <th>Contact</th>
-            <th>Type</th>
-            <th>Unit</th>
-            <th>Created</th>
-        </tr>
-        <tr>
-            {% for field in orders %}
-            <td><a href="{{ field.get_url }}">{{ field.client }}</a></td>
-            <td>{{ field.client.phone_number }}</td>
-            <td>{{ field.type_of_unit }}</td>
-            <td>Brand:{{ field.unit.brand }} Model:{{ field.unit.model }}</td>
-            <td>{{ field.created_at }}</td>
-        </tr>
-        {% endfor %}
+    <div class="left_side">
+        <ul>
+            <a href="new_order" style="color: white">Add new order</a>
+            <h3 class="h3_left">Orders</h3>
+            <h3 class="h3_left">Shop</h3>
+            <h3 class="h3_left">Payments</h3>
+            <h3 class="h3_left">Tasks</h3>
+            <hr color="gray">
+            <h3 class="h3_left">About</h3>
+        </ul>
+    </div>
+
+    <div class="right_side">
+
+        <table id="customers">
+            <tr>
+                <th>Client</th>
+                <th>Defect</th>
+                <th>Contact</th>
+                <th>Type</th>
+                <th>Unit</th>
+                <th>Stage</th>
+                <th>Created</th>
+                <th>Updated</th>
+            </tr>
+            <tr>
+                {% for field in orders %}
+                <td width="140px"><a href="{{ field.get_url }}">{{ field.client.name|title }} <br> {{ field.client.surname }}</a></td>
+                <td>{{ field.defect }}</td>
+                <td>{{ field.client.phone_number }}</td>
+                <td>{{ field.type_of_unit }}</td>
+                <td>{{ field.unit.brand|title }} {{ field.unit.model }}</td>
+                <td>{{ field.repair_stage }}</td>
+                <td>{{ field.created_at }}</td>
+                <td>{{ field.updated_at }}</td>
+            </tr>
+            {% endfor %}
 
 
-    </table>
+        </table>
 
-    <!--    <ul>{% for order in orders %}-->
-    <!--        <h3 class="p_list"><a href="{{ order.get_url }}" style="color: white; text-decoration:none ">{{ order.pk }} {{ order.unit.brand }} {{ order.unit.model }} </a>{{ order.defect }}{{ order.client }}</h3>-->
-    <!--        {% endfor %}-->
-    <!--    </ul>-->
+        <!--    <ul>{% for order in orders %}-->
+        <!--        <h3 class="p_list"><a href="{{ order.get_url }}" style="color: white; text-decoration:none ">{{ order.pk }} {{ order.unit.brand }} {{ order.unit.model }} </a>{{ order.defect }}{{ order.client }}</h3>-->
+        <!--        {% endfor %}-->
+        <!--    </ul>-->
+    </div>
 </div>
-
 
 {% endblock %}
 

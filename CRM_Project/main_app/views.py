@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView, CreateView, View
-from .models import Order, Client, Unit, Brand, Model, UnitType
-from .forms import NewOrderForm, NewClientForm, NewUnitForm, NewBrandForm, NewModelForm, NewUnitTypeForm
+from .models import Order, Client, Unit, Brand, Model, UnitType, RepairStage
+from .forms import NewOrderForm, NewClientForm, NewUnitForm, NewBrandForm, NewModelForm, NewUnitTypeForm, OrderDetailForm
 from django.http import HttpResponseRedirect
 
 
@@ -11,19 +11,20 @@ class Index(ListView):
     context_object_name = 'orders'
 
 
-class OrderDetail(DetailView):
-    template_name = 'main_app/order_detail.html'
-    model = Order
-    context_object_name = 'order'
+# class OrderDetail(DetailView):
+#     template_name = 'main_app/order_detail.html'
+#     model = Order
+#     context_object_name = 'order'
 
 
 class NewOrder(View):
 
     def get(self, request):
+        default_stage = RepairStage.objects.get(stage='Diagnostic')
         return render(request, 'main_app/add_order.html',
                       context={'order_form': NewOrderForm, 'client_form': NewClientForm, 'unit_form': NewUnitForm,
                                'unit_type_form': NewUnitTypeForm,
-                               'brand_form': NewBrandForm, 'model_form': NewModelForm})
+                               'brand_form': NewBrandForm, 'model_form': NewModelForm })
 
     def post(self, request):
         new_order = NewOrderForm(request.POST)
@@ -41,5 +42,17 @@ class NewOrder(View):
             unit.model = Model.objects.get(id=request.POST['model'])
             unit.save()
             order.unit = unit
+            order.repair_stage = RepairStage.objects.get(stage='Diagnostic')
             order.save()
             return HttpResponseRedirect('/')
+
+
+class GetOrder(View):
+
+    def get(self, request, pk:int):
+        order = Order.objects.get(id=pk)
+        form = OrderDetailForm(instance=order)
+        return render(request, 'main_app/order_detail.html', context={'order': form})
+
+    def post(self, pk:int):
+        pass

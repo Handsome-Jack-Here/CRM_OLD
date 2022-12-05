@@ -5,6 +5,17 @@
     margin: auto;
 }
 
+.header {
+    background: #0c5460;
+    height: 80px;
+    margin: 5px 5px 5px 5px ;
+    padding: 34px 14px 14px 24px;
+}
+
+.content {
+    width: 100%;
+}
+
 .left_side {
     height: 1020px;
     width: 20%;
