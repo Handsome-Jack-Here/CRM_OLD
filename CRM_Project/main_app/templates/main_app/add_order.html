@@ -5,16 +5,81 @@
 
 {% block content %}
 
-<form action="" method="post">
-    {% csrf_token %}
+<div class="form-group">
+    <form method="post">
+        {% csrf_token %}
+        {{ client_form.as_p }}<br>
+        {{ unit_form.as_p }}<br>
+        {{ order_form.as_p}}<br>
+        <button type="submit">Create</button>
+    </form>
+</div>
 
-    {{ order_form }}<br>
-    {{ client_form }}<br>
-    {{ unit_form }}<br>
+<!--<div class="form">-->
+<!--    <form action="" method="post">-->
+<!--        {% csrf_token %}-->
+<!--        <div class="title">New order</div>-->
 
+<!--        <div class="input-container ic1">-->
+<!--            <input name="name" id="firstname" value="{{client_form.name}}" class="input" type="text"-->
+<!--                   placeholder=" "/>-->
+<!--            <div class="cut"></div>-->
+<!--            <label class="placeholder">First name</label>-->
+<!--        </div>-->
 
-    <button type="submit">Create</button>
-</form>
+<!--        <div class="input-container ic2">-->
+<!--            <input name="surname" id="lastname" value="{{client_form.surname}}" class="input" type="text"-->
+<!--                   placeholder=" "/>-->
+<!--            <div class="cut"></div>-->
+<!--            <label class="placeholder">Last name</label>-->
+<!--        </div>-->
 
+<!--        <div class="input-container ic2">-->
+<!--            <input name="phone_number" value="{{ client_form.phone_number }}" class="input" type="text"-->
+<!--                   placeholder=" "/>-->
+<!--            <div class="cut cut-short"></div>-->
+<!--            <label class="placeholder">Phone</>-->
+<!--        </div>-->
 
+<!--&lt;!&ndash;        <div class="input-container ic2">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input name="type_of_unit" value="{{ order_form.type_of_unit }}" class="input" type="text" placeholder=" "/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div class="cut cut-short"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="placeholder">Unit type</>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--        <div class="input-container ic2">-->
+<!--            <input name="brand" value="{{ unit_form.brand }}" class="input" type="text" placeholder=" "/>-->
+<!--            <div class="cut cut-short"></div>-->
+<!--            <label class="placeholder">Unit brand</>-->
+<!--        </div>-->
+
+<!--        <div class="input-container ic2">-->
+<!--            <input name="model" value="{{ unit_form.model }}" class="input" type="text" placeholder=" "/>-->
+
+<!--            <div class="cut cut-short"></div>-->
+<!--            <label class="placeholder">Unit model</>-->
+<!--        </div>-->
+
+<!--        <div class="input-container ic2">-->
+<!--            <input name="serial_number" value="{{ unit_form.serial_number }}" class="input" type="text" placeholder=" "/>-->
+
+<!--            <div class="cut cut-short"></div>-->
+<!--            <label class="placeholder">Serial number</>-->
+<!--        </div>-->
+
+<!--&lt;!&ndash;        <div class="input-container ic2">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input name="defect" value="{{ order_form.defect }}" class="input" type="text" placeholder=" "/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div class="cut cut-short"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="placeholder">Defect description</>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--        {{ order_form.defect }}-->
+<!--        {{ order_form.type_of_unit }}-->
+
+<!--        <button type='submit' class="submit">CREATE</button>-->
+
+<!--    </form>-->
+<!--</div>-->
 {% endblock %}

@@ -31,6 +31,8 @@ class NewOrder(View):
         # new_client = NewClientForm(request.POST)
 
         if new_order.is_valid():
+            print('Is valid!')
+
             order = Order(defect=request.POST['defect'])
             unit = Unit(serial_number=request.POST['serial_number'])
             client = Client(name=request.POST['name'], surname=request.POST['surname'],
@@ -49,8 +51,8 @@ class NewOrder(View):
 
 class GetOrder(View):
 
-    def get(self, request, pk:int):
-        order = Order.objects.get(id=pk)
+    def get(self, request, val: int):
+        order = Order.objects.get(id=val)
         form = OrderDetailForm(instance=order)
         return render(request, 'main_app/order_detail.html', context={'order': form})
 
