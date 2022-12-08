@@ -8,7 +8,7 @@ class NewOrderForm(ModelForm):
         fields = ['defect', 'type_of_unit', ]
 
         widgets = {
-            'defect': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Defect description'}),
+            'defect': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Defect description', 'rows': 3, 'cols': 40}),
             'type_of_unit': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Unit type'}),
 
         }

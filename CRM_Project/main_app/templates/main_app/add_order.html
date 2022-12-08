@@ -5,16 +5,31 @@
 
 {% block content %}
 
-<div class="content">
-    <div class="form-group">
-        <form method="post">
-            {% csrf_token %}
+{% include 'includes/header.html' %}
 
-            {{ client_form.as_p }}<br>
-            {{ unit_form.as_p }}<br>
-            {{ order_form.as_p}}<br>
-            <button type="submit">Create</button>
-        </form>
+<div class="content">
+
+
+
+    <div class="left_side">
+        {% include 'includes/left_side_content.html' %}
+    </div>
+    <div class="right_side">
+        <div class="form-group">
+            <form method="post">
+                {% csrf_token %}
+
+                {{ client_form.as_p }}<br>
+                {{ unit_form.as_p }}<br>
+                {{ order_form.as_p}}<br>
+
+                <button class="create_order_button" type="submit">Create</button>
+
+            </form>
+        </div>
     </div>
 </div>
+
+</div>
+
 {% endblock %}

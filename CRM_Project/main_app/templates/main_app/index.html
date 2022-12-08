@@ -5,23 +5,13 @@
 {% block content %}
 
 
-<div class="header">
-    <p style="color: white">SOME TEXT FOR HEADER</p>
-
-</div>
+{% include 'includes/header.html' %}
 
 <div class="content">
 
     <div class="left_side">
-        <ul>
-            <a href="new_order" style="color: white">Add new order</a>
-            <h3 class="h3_left">Orders</h3>
-            <h3 class="h3_left">Shop</h3>
-            <h3 class="h3_left">Payments</h3>
-            <h3 class="h3_left">Tasks</h3>
-            <hr color="gray">
-            <h3 class="h3_left">About</h3>
-        </ul>
+        <a href="new_order" class="order_add_link" style="color: white"><button class="create_order_button">New order</button></a>
+        {% include 'includes/left_side_content.html' %}
     </div>
 
     <div class="right_side">
@@ -53,10 +43,6 @@
 
         </table>
 
-        <!--    <ul>{% for order in orders %}-->
-        <!--        <h3 class="p_list"><a href="{{ order.get_url }}" style="color: white; text-decoration:none ">{{ order.pk }} {{ order.unit.brand }} {{ order.unit.model }} </a>{{ order.defect }}{{ order.client }}</h3>-->
-        <!--        {% endfor %}-->
-        <!--    </ul>-->
     </div>
 </div>
 

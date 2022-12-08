@@ -1,36 +1,59 @@
 .wrap {
     background: #ffffff;
-    height: 100%;
-    width: 1040px;
-    margin: 7px 7px 7px 7px;
+    height: auto;
+    width: 1240px;
+    margin: auto;
+
 }
 
 .header {
     background: #0c5460;
-    height: 80px;
-    margin: 5px 5px 5px 5px ;
-    padding: 34px 14px 14px 24px;
+    color: white;
+    height: 110px;
+    width: 100%;
+    margin: 5px 10px 5px 10px ;
+    padding: 27px 34px 25px 35px;
+    font-size: xx-large;
+    float: left;
+    border-radius: 3px;
 }
 
 .content {
-    width: 100%;
+    width: 98%;
+    margin: 5px 5px 5px 5px;
+}
+
+.order_add_link {
+    margin: 0px 5px 30px 5px;
+    padding: 3px 5px 5px 5px;
+    float: right;
+}
+
+.navbar {
+    margin-left: 14px;
+    font-size: medium;
+    color: #b1dfbb;
 }
 
 .left_side {
-    height: 1020px;
-    width: 20%;
+    height: 980px;
+    width: 19%;
     float: left;
     background: #0c5460;
     margin: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 5px;
+    border-radius: 3px;
+    font-family: Ubuntu;
 }
 
 .right_side {
     height: 1020px;
-    width: 78%;
-    background: #818182;
+    width: 79%;
     float: right;
     margin: 5px 5px 5px 5px;
+    padding: 0px 5px 5px 5px;
     font-family: Ubuntu;
+    border-radius: 3px;
 }
 
 .p_list {
@@ -44,7 +67,15 @@
 
 }
 
-# new CSS for table
+.create_order_button {
+    border-radius: 5px;
+    width: 90px;
+    box-shadow: black;
+    color: black;
+    font-family: Ubuntu;
+}
+
+/*new CSS for table*/
 
 
 #customers {
