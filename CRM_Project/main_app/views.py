@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView, CreateView, View
 from .models import Order, Client, Unit, Brand, Model, UnitType, RepairStage
-from .forms import NewOrderForm, NewClientForm, NewUnitForm, NewBrandForm, NewModelForm, NewUnitTypeForm, OrderDetailForm
+from .forms import NewOrderForm, NewClientForm, NewUnitForm, NewBrandForm, NewModelForm, NewUnitTypeForm, \
+    OrderDetailForm
 from django.http import HttpResponseRedirect
 
 
@@ -24,7 +25,7 @@ class NewOrder(View):
         return render(request, 'main_app/add_order.html',
                       context={'order_form': NewOrderForm, 'client_form': NewClientForm, 'unit_form': NewUnitForm,
                                'unit_type_form': NewUnitTypeForm,
-                               'brand_form': NewBrandForm, 'model_form': NewModelForm })
+                               'brand_form': NewBrandForm, 'model_form': NewModelForm})
 
     def post(self, request):
         new_order = NewOrderForm(request.POST)
@@ -40,12 +41,26 @@ class NewOrder(View):
             client.save()
             order.client = client
             order.type_of_unit = UnitType.objects.get(id=request.POST['type_of_unit'])
+            model = Model(model=request.POST['model'])
+
+            for exist_model in Model.objects.all():
+                model_exists = False
+
+                if model.model == exist_model.model:
+                    model_exists = True
+                    unit.model = exist_model
+                    break
+
+            if not model_exists:
+                model.save()
+                unit.model = model
+
             unit.brand = Brand.objects.get(id=request.POST['brand'])
-            unit.model = Model.objects.get(id=request.POST['model'])
             unit.save()
             order.unit = unit
             order.repair_stage = RepairStage.objects.get(stage='Diagnostic')
             order.save()
+
             return HttpResponseRedirect('/')
 
 
@@ -56,5 +71,5 @@ class GetOrder(View):
         form = OrderDetailForm(instance=order)
         return render(request, 'main_app/order_detail.html', context={'order': form})
 
-    def post(self, pk:int):
+    def post(self, pk: int):
         pass

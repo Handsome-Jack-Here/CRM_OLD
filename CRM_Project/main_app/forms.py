@@ -8,8 +8,8 @@ class NewOrderForm(ModelForm):
         fields = ['defect', 'type_of_unit', ]
 
         widgets = {
-            'defect': forms.Textarea(attrs={'class': 'form-control'}),
-            'type_of_unit': forms.Select(attrs={'class': 'form-control'}),
+            'defect': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Defect description'}),
+            'type_of_unit': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Unit type'}),
 
         }
 
@@ -26,8 +26,8 @@ class NewClientForm(ModelForm):
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Input your name'}),
-            'surname': forms.TextInput(attrs={'class': 'form-control'}),
-            'phone_number': forms.TextInput(attrs={'class': 'form-control'})
+            'surname': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Input your surname'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your phone number'})
         }
 
 class NewUnitForm(ModelForm):
@@ -36,9 +36,9 @@ class NewUnitForm(ModelForm):
         fields = ['brand', 'model', 'serial_number']
 
         widgets = {
-            'brand': forms.Select(attrs={'class': 'form-control'}),
-            'model': forms.Select(attrs={'class': 'form-control'}),
-            'serial_number': forms.NumberInput(attrs={'class': 'form-control'})
+            'brand': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Unit brand'}),
+            'model': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Unit model'}),
+            'serial_number': forms.TextInput(attrs={'class': 'form-control'})
         }
 
 

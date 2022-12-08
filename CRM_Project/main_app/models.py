@@ -7,10 +7,10 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class Client(models.Model):
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
                                  message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
-    name = models.CharField(max_length=40, verbose_name='Имя')
-    surname = models.CharField(max_length=40, verbose_name='Фамилия')
+    name = models.CharField(max_length=40, verbose_name='Name')
+    surname = models.CharField(max_length=40, verbose_name='Surname')
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True,
-                                    verbose_name='Номер телефона')  # Validators should be a list
+                                    verbose_name='Phone number')  # Validators should be a list
     address = models.CharField(max_length=40, verbose_name='Адрес')
 
     def __str__(self):
@@ -18,7 +18,7 @@ class Client(models.Model):
 
 
 class Brand(models.Model):
-    brand = models.CharField(max_length=40, default='No brand', verbose_name='Бренд')
+    brand = models.CharField(max_length=40, default='No brand', verbose_name='Brand')
 
     def __str__(self):
         return f'{self.brand}'
