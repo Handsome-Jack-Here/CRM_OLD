@@ -67,8 +67,8 @@ class NewOrder(View):
 class GetOrder(View):
 
     def get(self, request, val: int):
-        order = Order.objects.get(id=val)
-        form = OrderDetailForm(instance=order)
+        this_order = Order.objects.get(id=val)
+        form = OrderDetailForm(instance=this_order)
         return render(request, 'main_app/order_detail.html', context={'order': form})
 
     def post(self, pk: int):
