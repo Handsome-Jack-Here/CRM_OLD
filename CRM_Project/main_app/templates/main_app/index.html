@@ -10,39 +10,45 @@
 <div class="content">
 
     <div class="left_side">
-        <a href="new_order" class="order_add_link" style="color: white"><button class="create_order_button">New order</button></a>
+        <a href="new_order" class="order_add_link" style="color: white">
+            <button class="btn btn-primary">New order</button>
+        </a>
         {% include 'includes/left_side_content.html' %}
+
     </div>
 
     <div class="right_side">
 
-        <table id="customers">
+        <table class="table table-striped">
+            <thead>
             <tr>
-                <th>Client</th>
-                <th>Defect</th>
-                <th>Contact</th>
-                <th>Type</th>
-                <th>Unit</th>
-                <th>Stage</th>
-                <th>Created</th>
-                <th>Updated</th>
+                <th scope="col">#</th>
+                <th scope="col">Client</th>
+                <th scope="col">Defect</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Type</th>
+                <th scope="col">Unit</th>
+                <th scope="col">Stage</th>
+                <th scope="col">Created</th>
+                <!--                <th scope="col">Updated</th>-->
             </tr>
+            </thead>
+            <tbody>
+            {% for field in orders %}
             <tr>
-                {% for field in orders %}
-                <td width="140px"><a href="{{ field.get_url }}">{{ field.client.name|title }} <br> {{ field.client.surname }}</a></td>
+                <td><a href="{{ field.get_url }} ">{{ field.id }}</a></td>
+                <td width="140px"><a href="{{ field.get_url }}"> {{ field.client|title }}</a></td>
                 <td>{{ field.defect }}</td>
                 <td>{{ field.client.phone_number }}</td>
                 <td>{{ field.type_of_unit }}</td>
                 <td>{{ field.unit.brand|title }} {{ field.unit.model }}</td>
                 <td>{{ field.repair_stage }}</td>
                 <td>{{ field.created_at }}</td>
-                <td>{{ field.updated_at }}</td>
+                <!--                <td>{{ field.updated_at }}</td>-->
             </tr>
             {% endfor %}
-
-
+            </tbody>
         </table>
-
     </div>
 </div>
 

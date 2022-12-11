@@ -3,15 +3,19 @@
 {% block title %} Order {{ order.pk }} detail{% endblock %}
 
 {% block content %}
-<div class="left_side">
+{% include 'includes/header.html' %}
+<div class="content">
 
-</div>
+    <div class="left_side">
+            {% include 'includes/left_side_content.html' %}
+    </div>
 
-<div class="right_side">
-    <form action="">
-        {{ order }}
+    <div class="right_side">
+        <form action="">
+            {{ order }}
 
 
+    </div>
 </div>
 
 {% endblock %}

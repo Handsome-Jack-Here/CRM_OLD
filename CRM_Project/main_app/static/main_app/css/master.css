@@ -1,7 +1,7 @@
 .wrap {
     background: #ffffff;
     height: auto;
-    width: 1240px;
+    width: 90%;
     margin: auto;
 
 }
@@ -9,10 +9,10 @@
 .header {
     background: #0c5460;
     color: white;
-    height: 110px;
+    height: 80px;
     width: 100%;
     margin: 5px 10px 5px 10px ;
-    padding: 27px 34px 25px 35px;
+    /*padding: 27px 34px 25px 35px;*/
     font-size: xx-large;
     float: left;
     border-radius: 3px;
@@ -30,7 +30,7 @@
 }
 
 .navbar {
-    margin-left: 14px;
+    width: 100%;
     font-size: medium;
     color: #b1dfbb;
     font-family: Ubuntu;
@@ -76,28 +76,3 @@
     font-family: Ubuntu;
 }
 
-/*new CSS for table*/
-
-
-#customers {
-  font-family: Ubuntu;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-#customers tr:hover {background-color: #ddd;}
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #0c5460;
-  color: white;
-}
