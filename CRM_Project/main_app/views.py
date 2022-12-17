@@ -12,12 +12,6 @@ class Index(ListView):
     context_object_name = 'orders'
 
 
-# class OrderDetail(DetailView):
-#     template_name = 'main_app/order_detail.html'
-#     model = Order
-#     context_object_name = 'order'
-
-
 class NewOrder(View):
 
     def get(self, request):
@@ -43,8 +37,9 @@ class NewOrder(View):
             order.type_of_unit = UnitType.objects.get(id=request.POST['type_of_unit'])
             model = Model(model=request.POST['model'])
 
+            model_exists = False
             for exist_model in Model.objects.all():
-                model_exists = False
+
 
                 if model.model == exist_model.model:
                     model_exists = True
