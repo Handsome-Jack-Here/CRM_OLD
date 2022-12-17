@@ -48,7 +48,7 @@ class NewUnitForm(ModelForm):
         fields = ['brand', 'model', 'serial_number']
 
         widgets = {
-            'brand': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Unit brand'}),
+            'brand': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Unit brand'}),
             'model': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Unit model'}),
             'serial_number': forms.TextInput(attrs={'class': 'form-control'})
         }

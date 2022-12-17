@@ -35,11 +35,12 @@ class NewOrder(View):
             client.save()
             order.client = client
             order.type_of_unit = UnitType.objects.get(id=request.POST['type_of_unit'])
+
             model = Model(model=request.POST['model'])
+            brand = Brand(brand=request.POST['brand'])
 
             model_exists = False
             for exist_model in Model.objects.all():
-
 
                 if model.model == exist_model.model:
                     model_exists = True
@@ -50,7 +51,18 @@ class NewOrder(View):
                 model.save()
                 unit.model = model
 
-            unit.brand = Brand.objects.get(id=request.POST['brand'])
+            brand_exists = False
+            for exist_brand in Brand.objects.all():
+
+                if brand.brand == exist_brand.brand:
+                    brand_exists = True
+                    unit.brand = exist_brand
+                    break
+
+            if not brand_exists:
+                brand.save()
+                unit.brand = brand
+
             unit.save()
             order.unit = unit
             order.repair_stage = RepairStage.objects.get(stage='Diagnostic')
