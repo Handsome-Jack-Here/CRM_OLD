@@ -12,9 +12,18 @@
 
     <div class="right_side">
         <form action="">
-            {{ order }}
+            Client: <a href="{{ client.get_url }}" style="text-decoration: none;">edit</a> <br>
+            {{ client }}<br>
+            Phone: {{ client.phone_number }}<br>
+            Address: {{ client.address }}
+            <hr>
+            {{ unit }} <a href="">edit</a>
+            <hr>
+            {{ order.defect }}
 
 
+
+        </form>
     </div>
 </div>
 

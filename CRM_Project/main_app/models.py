@@ -11,10 +11,13 @@ class Client(models.Model):
     surname = models.CharField(max_length=40, verbose_name='Surname')
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True,
                                     verbose_name='Phone number')  # Validators should be a list
-    address = models.CharField(max_length=40, verbose_name='Адрес')
+    address = models.CharField(max_length=40, default='No address', verbose_name='Адрес')
 
     def __str__(self):
         return f'{self.name} \n {self.surname}'
+
+    def get_url(self):
+        return reverse('edit-client', args=(self.pk, ))
 
 
 class Brand(models.Model):
@@ -45,7 +48,7 @@ class Unit(models.Model):
     model = models.ForeignKey(Model, on_delete=models.PROTECT, related_name='unit', null=True, verbose_name='Model')
 
     def __str__(self):
-        return f'{self.brand} {self.model}'
+        return f'{self.brand} {self.model} {self.serial_number}'
 
 
 class RepairStage(models.Model):

@@ -16,12 +16,12 @@ class NewOrderForm(ModelForm):
 class OrderDetailForm(ModelForm):
     class Meta:
         model = Order
-        fields = ['defect', 'diagnostic_result', 'client', 'works', 'finally_price', 'type_of_unit', 'unit', 'repair_stage', ]
+        fields = [ 'type_of_unit', 'unit', 'defect', 'diagnostic_result', 'works', 'finally_price',  'repair_stage', ]
 
         widgets = {
             'defect': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'cols': 24}),
             'diagnostic_result': forms.Textarea(attrs={'class': 'form-control' }),
-            'client': forms.Select(attrs={'class': 'form-control'}),
+            # 'client': forms.Select(attrs={'class': 'form-control'}),
             'works': forms.TextInput(attrs={'class': 'form-control'}),
             'finally_price': forms.TextInput(attrs={'class': 'form-control'}),
             'type_of_unit': forms.Select(attrs={'class': 'form-control'}),
@@ -70,3 +70,15 @@ class NewUnitTypeForm(ModelForm):
     class Meta:
         model = UnitType
         fields = '__all__'
+
+class EditClientForm(ModelForm):
+    class Meta:
+        model = Client
+        fields = '__all__'
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', }),
+            'surname': forms.TextInput(attrs={'class': 'form-control', }),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', }),
+            'address': forms.TextInput(attrs={'class': 'form-control', }),
+        }

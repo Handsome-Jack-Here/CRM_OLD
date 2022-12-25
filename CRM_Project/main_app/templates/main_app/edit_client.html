@@ -1,0 +1,33 @@
+{% extends 'main_app/base.html' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="content">
+
+    <div class="left_side">
+        {% include 'includes/left_side_content.html' %}
+    </div>
+
+    <div class="right_side">
+
+        <div class="form-group">
+
+            <form action="" method="post">
+                {% csrf_token %}
+
+                {{ client }}
+
+                <br><button class="save_client_button" type="submit">Save</button>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

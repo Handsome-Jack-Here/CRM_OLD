@@ -38,7 +38,7 @@
 
 .left_side {
     height: 980px;
-    width: 19%;
+    width: 17%;
     float: left;
     background: #0c5460;
     margin: 5px 5px 5px 5px;
@@ -69,8 +69,16 @@
 }
 
 .create_order_button {
-    border-radius: 5px;
+    border-radius: 3px;
     width: 90px;
+    box-shadow: black;
+    color: black;
+    font-family: Ubuntu;
+}
+
+.save_client_button {
+    border-radius: 3px;
+    width: 70px;
     box-shadow: black;
     color: black;
     font-family: Ubuntu;
