@@ -46,7 +46,7 @@ class Unit(models.Model):
 
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name='unit', null=True, verbose_name='Brand')
     model = models.ForeignKey(Model, on_delete=models.PROTECT, related_name='unit', null=True, verbose_name='Model')
-    type = models.ForeignKey(UnitType, on_delete=models.PROTECT, related_name='unit', null=True, verbose_name='Type')
+    type = models.ForeignKey(UnitType, on_delete=models.PROTECT, related_name='unit', null=True, verbose_name='Unit type')
 
     def __str__(self):
         return f'{self.type} {self.brand} {self.model} {self.serial_number}'

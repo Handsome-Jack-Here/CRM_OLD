@@ -29,12 +29,13 @@ class NewOrder(View):
             print('Is valid!')
 
             order = Order(defect=request.POST['defect'])
-            unit = Unit(serial_number=request.POST['serial_number'])
+            unit = Unit(serial_number=request.POST['serial_number'], )
             client = Client(name=request.POST['name'], surname=request.POST['surname'],
                             phone_number=request.POST['phone_number'])
             client.save()
             order.client = client
-            order.type_of_unit = UnitType.objects.get(id=request.POST['type_of_unit'])
+            unit.type = UnitType.objects.get(id=request.POST['type'])
+            unit.save()
 
             model = Model(model=request.POST['model'])
             brand = Brand(brand=request.POST['brand'])

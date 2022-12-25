@@ -5,11 +5,11 @@ from django import forms
 class NewOrderForm(ModelForm):
     class Meta:
         model = Order
-        fields = ['defect', 'type_of_unit', ]
+        fields = ['defect', ]
 
         widgets = {
             'defect': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Defect description', 'rows': 3, 'cols': 40}),
-            'type_of_unit': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Unit type'}),
+            # 'type_of_unit': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Unit type'}),
 
         }
 
@@ -45,12 +45,13 @@ class NewClientForm(ModelForm):
 class NewUnitForm(ModelForm):
     class Meta:
         model = Unit
-        fields = ['brand', 'model', 'serial_number']
+        fields = ['brand', 'model', 'serial_number', 'type']
 
         widgets = {
             'brand': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Unit brand'}),
             'model': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Unit model'}),
-            'serial_number': forms.TextInput(attrs={'class': 'form-control'})
+            'serial_number': forms.TextInput(attrs={'class': 'form-control'}),
+            'type': forms.Select(attrs={'class': 'form-control'}),
         }
 
 
