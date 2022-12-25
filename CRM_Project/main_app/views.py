@@ -78,7 +78,7 @@ class GetOrder(View):
         this_client = this_order.client
         this_unit = this_order.unit
         form = OrderDetailForm(instance=this_order)
-        return render(request, 'main_app/order_detail.html', context={'order': form, 'client': this_client, 'unit': this_unit})
+        return render(request, 'main_app/order_detail.html', context={'order': form, 'client': this_client, 'unit': this_unit })
 
     def post(self, pk: int):
         pass
