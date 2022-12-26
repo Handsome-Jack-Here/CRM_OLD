@@ -15,16 +15,14 @@ class NewOrderForm(ModelForm):
 class OrderDetailForm(ModelForm):
     class Meta:
         model = Order
-        fields = ['unit', 'defect', 'diagnostic_result', 'works', 'finally_price',  'repair_stage', ]
+        fields = ['defect', 'diagnostic_result', 'finally_price', 'services', 'repair_stage',  ]
 
         widgets = {
-            'defect': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'cols': 24}),
-            'diagnostic_result': forms.Textarea(attrs={'class': 'form-control' }),
-            # 'client': forms.Select(attrs={'class': 'form-control'}),
-            'works': forms.TextInput(attrs={'class': 'form-control'}),
-            'finally_price': forms.TextInput(attrs={'class': 'form-control'}),
-            'unit': forms.TextInput(attrs={'class': 'form-control'}),
-            'repair_stage': forms.Select(attrs={'class': 'form-control'}),
+            'defect': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'cols': 24, }),
+            'diagnostic_result': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, }),
+            'finally_price': forms.TextInput(attrs={'class': 'form-control', }),
+            'repair_stage': forms.Select(attrs={'class': 'form-control', }),
+            'services': forms.SelectMultiple(attrs={'class': 'form-control', })
 
         }
 

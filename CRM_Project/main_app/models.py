@@ -59,6 +59,12 @@ class RepairStage(models.Model):
         return f'{self.stage}'
 
 
+class Services(models.Model):
+    name = models.TextField(max_length=120)
+
+    def __str__(self):
+        return f'{self.name}'
+
 class Order(models.Model):
     defect = models.TextField(max_length=120, null=True, blank=True, verbose_name='Defect description')
     diagnostic_result = models.TextField(max_length=400, null=True, blank=True, verbose_name='Diagnostic result')
@@ -72,6 +78,7 @@ class Order(models.Model):
     unit = models.ForeignKey(Unit, on_delete=models.PROTECT, related_name='order', null=True, verbose_name='Unit')
     repair_stage = models.ForeignKey(RepairStage, on_delete=models.PROTECT, null=True, related_name='order',
                                      verbose_name='Repair stage', editable=True)
+    services = models.ManyToManyField(Services, verbose_name='Sevices')
 
     def __str__(self):
         return f'{self.pk}'
