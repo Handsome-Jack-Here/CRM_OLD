@@ -70,7 +70,6 @@ class Order(models.Model):
     updated_at = models.DateTimeField(auto_now=True, null=True, verbose_name='Modified')
     client = models.ForeignKey(Client, on_delete=models.PROTECT, related_name='order', verbose_name='Client', null=True)
     unit = models.ForeignKey(Unit, on_delete=models.PROTECT, related_name='order', null=True, verbose_name='Unit')
-    type_of_unit = models.ForeignKey(UnitType, on_delete=models.PROTECT, related_name='order', null=True, verbose_name='Unit type')
     repair_stage = models.ForeignKey(RepairStage, on_delete=models.PROTECT, null=True, related_name='order',
                                      verbose_name='Repair stage', editable=True)
 

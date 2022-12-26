@@ -9,14 +9,13 @@ class NewOrderForm(ModelForm):
 
         widgets = {
             'defect': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Defect description', 'rows': 3, 'cols': 40}),
-            # 'type_of_unit': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Unit type'}),
 
         }
 
 class OrderDetailForm(ModelForm):
     class Meta:
         model = Order
-        fields = [ 'type_of_unit', 'unit', 'defect', 'diagnostic_result', 'works', 'finally_price',  'repair_stage', ]
+        fields = ['unit', 'defect', 'diagnostic_result', 'works', 'finally_price',  'repair_stage', ]
 
         widgets = {
             'defect': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'cols': 24}),
@@ -24,7 +23,6 @@ class OrderDetailForm(ModelForm):
             # 'client': forms.Select(attrs={'class': 'form-control'}),
             'works': forms.TextInput(attrs={'class': 'form-control'}),
             'finally_price': forms.TextInput(attrs={'class': 'form-control'}),
-            'type_of_unit': forms.Select(attrs={'class': 'form-control'}),
             'unit': forms.TextInput(attrs={'class': 'form-control'}),
             'repair_stage': forms.Select(attrs={'class': 'form-control'}),
 

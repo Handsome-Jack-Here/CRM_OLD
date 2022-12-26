@@ -34,6 +34,6 @@ class UnitTypeAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['pk', 'client', 'unit', 'defect', 'diagnostic_result', 'repair_stage', 'type_of_unit', ]
+    list_display = ['pk', 'client', 'unit', 'defect', 'diagnostic_result', 'repair_stage']
     list_editable = ['repair_stage']
     list_display_links = ['pk', 'client', ]
