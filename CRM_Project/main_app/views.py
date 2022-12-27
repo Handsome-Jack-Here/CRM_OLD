@@ -31,15 +31,22 @@ class NewOrder(View):
             unit = Unit(serial_number=request.POST['serial_number'], )
             client = Client(name=request.POST['name'], surname=request.POST['surname'],
                             phone_number=request.POST['phone_number'])
-            client.save()
-            order.client = client
-            unit.type = UnitType.objects.get(id=request.POST['type'])
-            unit.save()
-
-
 
             model = Model(model=request.POST['model'])
             brand = Brand(brand=request.POST['brand'])
+
+            client_exist = False
+            for exist_client in Client.objects.all():
+                if client.name + client.surname + client.phone_number == exist_client.name + exist_client.surname + exist_client.phone_number:
+                    client_exist = True
+                    client = exist_client
+                    client.save()
+                    break
+
+            # client.save()
+
+            unit.type = UnitType.objects.get(id=request.POST['type'])
+            unit.save()
 
             model_exists = False
             for exist_model in Model.objects.all():
@@ -65,6 +72,7 @@ class NewOrder(View):
                 brand.save()
                 unit.brand = brand
 
+            order.client = client
             unit.save()
             order.unit = unit
             order.repair_stage = RepairStage.objects.get(stage='Diagnostic')
@@ -80,7 +88,8 @@ class GetOrder(View):
         this_client = this_order.client
         this_unit = this_order.unit
         form = OrderDetailForm(instance=this_order)
-        return render(request, 'main_app/order_detail.html', context={'order': form, 'client': this_client, 'unit': this_unit })
+        return render(request, 'main_app/order_detail.html',
+                      context={'order': form, 'client': this_client, 'unit': this_unit})
 
     def post(self, pk: int):
         pass
@@ -93,10 +102,9 @@ class EditClient(View):
         client_form = EditClientForm(instance=this_client)
         return render(request, 'main_app/edit_client.html', context={'client': client_form, })
 
-
     def post(self, request, val: int):
         this_client = Client.objects.get(id=val)
-        client_form = EditClientForm(request.POST,  instance=this_client)
+        client_form = EditClientForm(request.POST, instance=this_client)
         if client_form.is_valid():
             client_form.save()
             return HttpResponseRedirect('/')
