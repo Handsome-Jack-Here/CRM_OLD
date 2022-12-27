@@ -35,7 +35,7 @@ class NewClientForm(ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Input your name'}),
             'surname': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Input your surname'}),
-            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your phone number'})
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your phone number', 'data-mask': '123456'})
         }
 
 class NewUnitForm(ModelForm):

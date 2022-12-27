@@ -15,7 +15,6 @@ class Index(ListView):
 class NewOrder(View):
 
     def get(self, request):
-        default_stage = RepairStage.objects.get(stage='Diagnostic')
         return render(request, 'main_app/add_order.html',
                       context={'order_form': NewOrderForm, 'client_form': NewClientForm, 'unit_form': NewUnitForm,
                                'unit_type_form': NewUnitTypeForm,
