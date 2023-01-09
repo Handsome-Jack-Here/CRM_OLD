@@ -1,26 +1,35 @@
 .wrap {
     background: #ffffff;
-    height: auto;
+    height: 900px;
     width: 90%;
     margin: auto;
+    padding-top: 0px;
 
 }
 
 .header {
-    background: #0c5460;
+/*    background: #0c5460;*/
     color: white;
     height: 56px;
     width: 100%;
-    margin: 5px 10px 5px 10px ;
+/*    margin: 5px 10px 5px 10px ;*/
     /*padding: 27px 34px 25px 35px;*/
     font-size: xx-large;
     float: left;
     border-radius: 3px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    clear: both;
+    float: left;
 }
 
 .content {
+    margin-top: 5px;
+    padding-top: 10px;
     width: 98%;
-    margin: 5px 5px 5px 5px;
+    height: 1000px;
+    clear: both;
 }
 
 .order_add_link {
@@ -45,6 +54,9 @@
     padding: 5px 5px 5px 5px;
     border-radius: 3px;
     font-family: Ubuntu;
+
+    position: fixed;
+    top: 100;
 }
 
 .right_side {
@@ -52,7 +64,7 @@
     width: 79%;
     float: right;
     margin: 5px 5px 5px 5px;
-    padding: 0px 5px 5px 5px;
+    padding: 25px 5px 5px 5px;
     font-family: Ubuntu;
     border-radius: 3px;
 }

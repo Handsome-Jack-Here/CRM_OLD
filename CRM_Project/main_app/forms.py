@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Order, Client, Unit, Brand, Model, UnitType
+from .models import Order, Client, Unit, Brand, Model, UnitType, Part, Services
 from django import forms
 
 class NewOrderForm(ModelForm):
@@ -78,4 +78,26 @@ class EditClientForm(ModelForm):
             'surname': forms.TextInput(attrs={'class': 'form-control', }),
             'phone_number': forms.TextInput(attrs={'class': 'form-control', }),
             'address': forms.TextInput(attrs={'class': 'form-control', }),
+        }
+
+class NewPartForm(ModelForm):
+
+    class Meta:
+        model = Part
+        fields = '__all__'
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', }),
+            'description': forms.TextInput(attrs={'class': 'form-control', })
+        }
+
+class NewServiceForm(ModelForm):
+
+    class Meta:
+        model = Services
+        fields = '__all__'
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', }),
+            'price': forms.TextInput(attrs={'class': 'form-control', })
         }

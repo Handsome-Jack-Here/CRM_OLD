@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import DetailView, ListView, CreateView, View
 from .models import Order, Client, Unit, Brand, Model, UnitType, RepairStage
 from .forms import NewOrderForm, NewClientForm, NewUnitForm, NewBrandForm, NewModelForm, NewUnitTypeForm, \
-    OrderDetailForm, EditClientForm
+    OrderDetailForm, EditClientForm, NewServiceForm, NewPartForm
 from django.http import HttpResponseRedirect
 
 
@@ -43,7 +43,9 @@ class NewOrder(View):
                     client.save()
                     break
 
-            # client.save()
+            if not client_exist:
+                client.save()
+                order.client = client
 
             unit.type = UnitType.objects.get(id=request.POST['type'])
             unit.save()
@@ -87,9 +89,10 @@ class GetOrder(View):
         this_order = Order.objects.get(id=val)
         this_client = this_order.client
         this_unit = this_order.unit
+
         form = OrderDetailForm(instance=this_order)
         return render(request, 'main_app/order_detail.html',
-                      context={'order': form, 'client': this_client, 'unit': this_unit})
+                      context={'order': form, 'client': this_client, 'unit': this_unit, })
 
     def post(self, pk: int):
         pass
