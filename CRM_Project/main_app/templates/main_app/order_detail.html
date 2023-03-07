@@ -7,25 +7,39 @@
 <div class="content">
 
     <div class="left_side">
-            {% include 'includes/left_side_content.html' %}
+        {% include 'includes/left_side_content.html' %}
     </div>
 
     <div class="right_side">
-        <form action="">
-            Client: <a href="{{ client.get_url }}" style="text-decoration: none;">edit</a> <br>
-            {{ client }}<br>
-            Phone: {{ client.phone_number }}<br>
-            Address: {{ client.address }}
-            <hr>
-            {{ unit }} <a href="">edit</a>
-            <hr>
-            {{ order }}<br>
+        <div class="order_id">Order id:<span>{{ order_id }}</span></div>
+        <div class="client">
+            <div class="client_static">
+                <div class="client_fields">
+
+                </div>
+
+                <a href="" id="edit"> Edit</a>
+            </div>
+            <div class="client_edit">
+                <form action="" id="client_edit">
+                    <input type="text" id="name" class="form-control" placeholder="Name">
+                    <input type="text" id="surname" class="form-control" placeholder="Surname">
+                    <input type="text" id="phone_number" class="form-control" placeholder="Phone number">
+                    <button class="btn-sm">Save changes</button>
+                </form>
 
 
+            </div>
 
-        </form>
+        </div>
+        <br>
+        <hr>
+        <div class="defect">
+            <input type="text" placeholder="Defect description">
+        </div>
+
     </div>
+
+    {% endblock %}
+
 </div>
-
-{% endblock %}
-

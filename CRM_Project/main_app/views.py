@@ -1,15 +1,38 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from django.views.generic import DetailView, ListView, CreateView, View
 from .models import Order, Client, Unit, Brand, Model, UnitType, RepairStage
 from .forms import NewOrderForm, NewClientForm, NewUnitForm, NewBrandForm, NewModelForm, NewUnitTypeForm, \
     OrderDetailForm, EditClientForm, NewServiceForm, NewPartForm
 from django.http import HttpResponseRedirect
+import json
 
 
 class Index(ListView):
     template_name = 'main_app/index.html'
     model = Order
     context_object_name = 'orders'
+
+
+class OrderEdit(View):
+
+    def get(self, request):
+        this_order = Order.objects.get(id=int(request.GET['order_id']))
+        name = this_order.client.name
+        surname = this_order.client.surname
+        phone_number = this_order.client.phone_number
+        brand = this_order.unit.brand.brand
+        model = this_order.unit.model.model
+        serial_number = this_order.unit.serial_number
+        type_of_unit = this_order.unit.type.unit_type
+        services = list(this_order.services.all().values())
+        # repair_stage = this_order.repair_stage
+        # print(services)
+        return JsonResponse({'client': {'name': name, 'surname': surname, 'phone_number': phone_number},
+                             'unit': {'brand': brand, 'model': model, 'serial_number': serial_number,
+                                      'type_of_unit': type_of_unit},
+                             'order': {'services': services, }
+                             })
 
 
 class NewOrder(View):
@@ -89,10 +112,10 @@ class GetOrder(View):
         this_order = Order.objects.get(id=val)
         this_client = this_order.client
         this_unit = this_order.unit
-
+        req = request
         form = OrderDetailForm(instance=this_order)
         return render(request, 'main_app/order_detail.html',
-                      context={'order': form, 'client': this_client, 'unit': this_unit, })
+                      context={'order_id': val, 'order': form, 'client': this_client, 'unit': this_unit, })
 
     def post(self, pk: int):
         pass

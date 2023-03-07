@@ -96,3 +96,31 @@
     font-family: Ubuntu;
 }
 
+
+.client {
+    width: 100%;
+    height: 160px;
+    margin: auto;
+
+}
+
+.client_static {
+    width: 48%;
+    margin: auto;
+    float: left;
+}
+
+.client_edit {
+    width: 48%;
+    margin: auto;
+    float: right;
+}
+
+.form-control {
+    margin-bottom: 4px;
+}
+
+.defect {
+    width: 100%;
+    margin: auto;
+}
