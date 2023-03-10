@@ -24,15 +24,21 @@ class OrderEdit(View):
         brand = this_order.unit.brand.brand
         model = this_order.unit.model.model
         serial_number = this_order.unit.serial_number
+        defect = this_order.defect
         type_of_unit = this_order.unit.type.unit_type
+        types = list(UnitType.objects.all().values('unit_type'))
         services = list(this_order.services.all().values())
         # repair_stage = this_order.repair_stage
         # print(services)
-        return JsonResponse({'client': {'name': name, 'surname': surname, 'phone_number': phone_number},
-                             'unit': {'brand': brand, 'model': model, 'serial_number': serial_number,
-                                      'type_of_unit': type_of_unit},
-                             'order': {'services': services, }
-                             })
+        return JsonResponse(
+            {'client': {'name': name, 'surname': surname, 'phone_number': phone_number},
+             'unit': {'brand': brand, 'model': model, 'serial_number': serial_number, 'type_of_unit': type_of_unit},
+             'types': {'types': types},
+             'order': {'services': services, 'defect': defect}
+             })
+
+    def post(self, request):
+        pass
 
 
 class NewOrder(View):
