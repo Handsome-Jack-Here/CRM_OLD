@@ -6,7 +6,12 @@ from .forms import NewOrderForm, NewClientForm, NewUnitForm, NewBrandForm, NewMo
     OrderDetailForm, EditClientForm, NewServiceForm, NewPartForm
 from django.http import HttpResponseRedirect
 from rest_framework import generics
+from .serialiazers import OrderSerializer
 
+
+class OrderAPI(generics.ListAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
 
 
 class Index(ListView):

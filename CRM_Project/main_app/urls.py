@@ -7,6 +7,7 @@ urlpatterns = [
     path('order/<int:val>/', views.GetOrder.as_view(), name='get-order'),
     path('order/client-edit/<int:val>', views.EditClient.as_view(), name='edit-client'),
     path('order-edit/', views.OrderEdit.as_view()),
+    path('api/v1/order-list', views.OrderAPI.as_view())
 
 
 
