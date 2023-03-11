@@ -1,14 +1,34 @@
 $(document).ready(function () {
 
+    $('#save_order').attr('disabled', true)
+
+    function getCookie(name) {
+        let cookieValue = null
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';')
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim()
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1))
+                    break
+                }
+            }
+        }
+        return cookieValue
+    }
+
+    const csrftoken = getCookie('csrftoken')
+
     var name, surname, phone_number, brand, model, serial_number, type_of_unit, types, defect
 
     $('.client_edit').hide()
     $('.unit_edit').hide()
-    var data = $('.order_id span').text()
+    var order = $('.order_id span').text()
     $.ajax({
         url: '/order-edit/',
         method: 'GET',
-        data: {'order_id': data},
+        data: {'order_id': order},
         dataType: 'json',
     }).done(function (response) {
         name = response.client.name
@@ -58,8 +78,9 @@ $(document).ready(function () {
 
     // click Client edit
     $('.client_static a').click(function (e) {
-
         e.preventDefault()
+        
+        $('#save_order').attr('disabled', false)
         $('.client_static').hide()
         $('.client_edit').fadeIn(140)
 
@@ -106,9 +127,27 @@ $(document).ready(function () {
         type_of_unit = $('#type_of_unit option').filter(':selected').val()
     })
 
-    $('#save_order').click(function (e){
+    $('#save_order').click(function (e) {
         e.preventDefault()
-        alert('test')
+        var data = {
+            'order': order,
+            'name': $('#name').val(),
+            'surname': $('#surname').val(),
+            'phone_number': $('#phone_number').val(),
+            'brand': $('#brand').val(),
+            'model': $('#model').val(),
+            'serial_number': $('#serial_number').val(),
+            'unit_type': $('#type_of_unit option').filter(':selected').val(),
+
+            csrfmiddlewaretoken: csrftoken
+        }
+        $.ajax({
+            url: '/order-edit/',
+            method: 'POST',
+            data: data,
+        }).done(function (response) {
+            alert('Order saved')
+        })
     })
 
 })

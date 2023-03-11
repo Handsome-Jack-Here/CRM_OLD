@@ -5,7 +5,8 @@ from .models import Order, Client, Unit, Brand, Model, UnitType, RepairStage
 from .forms import NewOrderForm, NewClientForm, NewUnitForm, NewBrandForm, NewModelForm, NewUnitTypeForm, \
     OrderDetailForm, EditClientForm, NewServiceForm, NewPartForm
 from django.http import HttpResponseRedirect
-import json
+from rest_framework import generics
+
 
 
 class Index(ListView):
@@ -38,7 +39,18 @@ class OrderEdit(View):
              })
 
     def post(self, request):
-        pass
+        this_order = Order.objects.get(id=request.POST['order'])
+        client = Client.objects.get(id=this_order.client_id)
+        unit = Unit.objects.get(id=this_order.unit_id)
+        client.name = request.POST['name']
+        client.surname = request.POST['surname']
+        client.phone_number = request.POST['phone_number']
+
+
+        client.save()
+        this_order.save()
+
+        return JsonResponse({'data': 'Order saved'})
 
 
 class NewOrder(View):
