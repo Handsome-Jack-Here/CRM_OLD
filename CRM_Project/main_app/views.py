@@ -47,11 +47,18 @@ class OrderEdit(View):
         this_order = Order.objects.get(id=request.POST['order'])
         client = Client.objects.get(id=this_order.client_id)
         unit = Unit.objects.get(id=this_order.unit_id)
+
         client.name = request.POST['name']
         client.surname = request.POST['surname']
         client.phone_number = request.POST['phone_number']
 
+        unit.brand = Brand.objects.get_or_create(brand=request.POST['brand'])[0]
+        unit.model = Model.objects.get_or_create(model=request.POST['model'])[0]
+        unit.serial_number = request.POST['serial_number']
+        unit.type = UnitType.objects.get_or_create(unit_type=request.POST['unit_type'])[0]
+        this_order.defect = request.POST['defect']
 
+        unit.save()
         client.save()
         this_order.save()
 

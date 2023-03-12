@@ -113,8 +113,14 @@
 }
 
 
+.static_form {
+    background: #bac2c2;
+    border-radius: 4px;
+    padding: 14px 14px;
+}
+
 .edit_form {
-    background: #eff5f5;
+    background: #c6cece;
     width: 100%;
     margin: auto;
     padding: 14px 14px;
@@ -152,21 +158,16 @@
 }
 
 .client_static {
-    background: #eff5f5;
     width: 100%;
     margin: auto;
     float: left;
-    border-radius: 4px;
-    padding: 14px 14px;
+
 }
 
 .unit_static {
-    background: #eff5f5;
     width: 100%;
     margin: auto;
     float: left;
-    border-radius: 4px;
-    padding: 14px 14px;
 }
 
 

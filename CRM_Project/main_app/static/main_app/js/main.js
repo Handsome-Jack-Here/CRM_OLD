@@ -75,11 +75,31 @@ $(document).ready(function () {
 
     })
 
+    function client_close() {
+        $('.client_edit').hide()
+        $('.client_static').fadeIn(140)
+        $('.client_fields *').remove()
+        $('.client_fields').append(`<span> ${$('#name').val()}  </span> <br>`)
+        $('.client_fields').append(`<span> ${$('#surname').val()}  </span> <br>`)
+        $('.client_fields').append(`<span> ${$('#phone_number').val()}  </span> <br>`)
+    }
+
+    function unit_close(){
+        $('.unit_fields *').remove()
+        $('.unit_edit').hide()
+        $('.unit_static').fadeIn(140)
+
+        $('.unit_fields').append(`<span> ${$('#brand').val()} </span> <br>`)
+        $('.unit_fields').append(`<span> ${$('#model').val()} </span> <br>`)
+        $('.unit_fields').append(`<span> ${$('#serial_number').val()} </span> <br>`)
+        $('.unit_fields').append(`<span> ${$('#type_of_unit option').filter(':selected').val()} </span> <br>`)
+        type_of_unit = $('#type_of_unit option').filter(':selected').val()
+    }
 
     // click Client edit
-    $('.client_static a').click(function (e) {
+    $('.client_static a').click(function close_client(e) {
         e.preventDefault()
-        
+
         $('#save_order').attr('disabled', false)
         $('.client_static').hide()
         $('.client_edit').fadeIn(140)
@@ -87,12 +107,7 @@ $(document).ready(function () {
         // close Client edit
         $('.close_client_edit').click(function (e) {
             e.preventDefault()
-            $('.client_edit').hide()
-            $('.client_static').fadeIn(140)
-            $('.client_fields *').remove()
-            $('.client_fields').append(`<span> ${$('#name').val()}  </span> <br>`)
-            $('.client_fields').append(`<span> ${$('#surname').val()}  </span> <br>`)
-            $('.client_fields').append(`<span> ${$('#phone_number').val()}  </span> <br>`)
+            client_close()
         })
     })
 
@@ -116,15 +131,7 @@ $(document).ready(function () {
     // close Unit edit
     $('.close_unit_edit').click(function (e) {
         e.preventDefault()
-        $('.unit_fields *').remove()
-        $('.unit_edit').hide()
-        $('.unit_static').fadeIn(140)
-
-        $('.unit_fields').append(`<span> ${$('#brand').val()} </span> <br>`)
-        $('.unit_fields').append(`<span> ${$('#model').val()} </span> <br>`)
-        $('.unit_fields').append(`<span> ${$('#serial_number').val()} </span> <br>`)
-        $('.unit_fields').append(`<span> ${$('#type_of_unit option').filter(':selected').val()} </span> <br>`)
-        type_of_unit = $('#type_of_unit option').filter(':selected').val()
+        unit_close()
     })
 
     $('#save_order').click(function (e) {
@@ -138,6 +145,7 @@ $(document).ready(function () {
             'model': $('#model').val(),
             'serial_number': $('#serial_number').val(),
             'unit_type': $('#type_of_unit option').filter(':selected').val(),
+            'defect': $('#defect_edit').val(),
 
             csrfmiddlewaretoken: csrftoken
         }
@@ -146,9 +154,13 @@ $(document).ready(function () {
             method: 'POST',
             data: data,
         }).done(function (response) {
-            alert('Order saved')
+            unit_close()
+            client_close()
+            // alert('Order saved')
         })
     })
+
+
 
 })
 
